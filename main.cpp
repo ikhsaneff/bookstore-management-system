@@ -1,37 +1,32 @@
-#include "linked_list.h"
+#include "admin.h"
 
 using namespace std;
 
 int main()
 {
-     /* Start with the empty list */
-    LinkedList usernameList, passwordList;
-    string x = "haha";
-    int index;
-    string password;
+    Administrator admin;
+    string username, password;
 
-    /* Use push() to construct below list
-    14->21->11->30->10 */
-    usernameList.insertNode("test1");
-    usernameList.insertNode("test2");
-    usernameList.insertNode("test3");
-    usernameList.insertNode("test4");
-    usernameList.insertNode("test5");
+    cout << "=== Login Page ===" << endl;
+    cout << " Username: ";
+    getline(cin, username);
+    cout << " Password: ";
+    getline(cin, password);
 
-    passwordList.insertNode("pass1");
-    passwordList.insertNode("pass2");
-    passwordList.insertNode("pass3");
-    passwordList.insertNode("pass4");
-    passwordList.insertNode("pass5");
+    transform(username.begin(), username.end(), username.begin(), ::tolower);
 
+    int loginCondition = admin.verifyLogin(username, password);
 
-    usernameList.printList();
-    cout << endl;
-    passwordList.printList();
-    cout << endl;
-
-    usernameList.getIndex(x);
-
-    cout << "index: " << usernameList.returnIndex() << endl;
-    return 0;
+    if (loginCondition == 1)
+    {
+        cout << "Login success";
+    }
+    else if (loginCondition == 2)
+    {
+        cout << "You entered wrong password";
+    }
+    else
+    {
+        cout << "User not found";
+    }
 }

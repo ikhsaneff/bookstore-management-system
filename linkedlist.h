@@ -1,10 +1,14 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
 #include <iostream>
 #include <assert.h>
 #include <bits/stdc++.h>
 #include <string>
 using namespace std;
 
-class Node {
+class Node
+{
 public:
 	string data;
 	Node* next;
@@ -22,7 +26,8 @@ public:
 	}
 };
 
-class LinkedList {
+class LinkedList
+{
 	Node* head;
 	Node* sorted;
 
@@ -30,13 +35,14 @@ public:
 	LinkedList() { head = NULL; }
 	int counter = 0;
 	string element;
-	void insertNode(string);
+	void push(string);
 	void printList();
 	void deleteNode(int);
 	void getIndex(string);
 	void getNth(int);
 	int returnIndex();
 	string returnData();
+	bool find(string);
 };
 
 int LinkedList::returnIndex()
@@ -105,7 +111,7 @@ void LinkedList::deleteNode(int index)
 }
 
 // Function to insert a new node.
-void LinkedList::insertNode(string data)
+void LinkedList::push(string data)
 {
 	// Create new Node.
 	Node* newNode = new Node(data);
@@ -167,15 +173,15 @@ void LinkedList::getIndex(string x)
         }
         else
         {
-            temp = temp->next;
             counter += 1;
+            temp = temp->next;
         }
     }
 
     if (tempElement != x)
     {
         cout << "Not Found" << endl;
-        counter = NULL;
+        counter = 0;
     }
 }
 
@@ -212,3 +218,38 @@ void LinkedList::getNth(int index)
         temp = temp->next;
     }
 }
+
+bool LinkedList::find(string x)
+{
+    Node* temp = head;
+    counter = 0;
+    string tempElement;
+
+    // Check if the list is empty
+    if (head == NULL)
+        cout << "List is empty" << endl;
+
+    // Increase counter to match
+    // the searched Node's index
+    while (temp != NULL)
+    {
+        if (temp->data == x)
+        {
+            tempElement = temp->data;
+            return true;
+        }
+        else
+        {
+            counter += 1;
+            temp = temp->next;
+        }
+    }
+
+    if (tempElement != x)
+    {
+        return false;
+        counter = 0;
+    }
+}
+
+#endif
