@@ -5,6 +5,8 @@
 #include <assert.h>
 #include <bits/stdc++.h>
 #include <string>
+#include <conio.h>
+
 using namespace std;
 
 class Node
@@ -136,6 +138,7 @@ void LinkedList::push(string data)
 void LinkedList::printList()
 {
 	Node* temp = head;
+	int counter = 1;
 
 	// Check if the list is empty
 	if (head == NULL) {
@@ -146,8 +149,9 @@ void LinkedList::printList()
 	// Traverse and print
 	// all element of the list.
 	while (temp != NULL) {
-		cout << temp->data << " ";
+		cout << counter << ". " << temp->data << "\n";
 		temp = temp->next;
+		counter++;
 	}
 }
 

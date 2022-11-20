@@ -6,20 +6,20 @@
 class User
 {
 public:
-    LinkedList UserList;
-    LinkedList PassList;
+    LinkedList userList;
+    LinkedList passList;
     int verifyLogin(string, string);
 };
 
 int User::verifyLogin(string username, string password)
 {
-    UserList.getIndex(username);
-    int userIndex = UserList.returnIndex();
+    userList.getIndex(username);
+    int userIndex = userList.returnIndex();
 
-    PassList.getNth(userIndex);
-    string userPass = PassList.returnData();
+    passList.getNth(userIndex);
+    string userPass = passList.returnData();
 
-    if (UserList.find(username))
+    if (userList.find(username))
     {
         if (password == userPass)
         {
